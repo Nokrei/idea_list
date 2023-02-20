@@ -1,8 +1,3 @@
-type SortIdeas = {
-  ideas: [];
-  property: string | number;
-  isDescending?: boolean;
-};
 type State = {
   ideas: [];
 };
@@ -18,7 +13,11 @@ type Action = {
 
 export const initialState = { ideas: [] };
 
-export const sortIdeas = ({ ideas, property, isDescending }: SortIdeas) => {
+export const sortIdeas = (
+  ideas: [],
+  property: string | number,
+  isDescending?: boolean
+) => {
   if (!Array.isArray(ideas)) return [];
 
   return [...ideas].sort((a, b) => {
