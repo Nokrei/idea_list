@@ -29,3 +29,7 @@ Simpe to-do type app made with NextJS.
 The user can create, edit and remove ideas.
 A newly created idea is saved in local storage and persists on page reload.
 Ideas can be sorted by date (time of creation) or title.
+
+## Live version
+
+Deployed to Vercel at [https://idea-list-21pl.vercel.app/](https://idea-list-21pl.vercel.app/)
