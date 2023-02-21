@@ -3,7 +3,10 @@ type State = {
 };
 
 type Idea = {
+  title: string;
+  description: string;
   createdAt: number;
+  updatedAt?: number;
 };
 
 type AddIdeaAction = {
@@ -40,7 +43,7 @@ export const initialState = { ideas: [] };
 
 export const sortIdeas = (
   ideas: any[],
-  property: string | number,
+  property: string,
   isDescending?: boolean
 ) => {
   if (!Array.isArray(ideas)) return [];
