@@ -25,12 +25,12 @@ export default function Form({ submitForm }: Form) {
         <label htmlFor="title">Title</label>
         <br />
         <input
-          className="bg-slate-100 p-1"
+          className="w-full rounded bg-slate-100 p-1 focus:bg-slate-200 focus:outline-none"
           autoFocus
           id="title"
           {...register("title", { required: true, maxLength: 20 })}
         />
-        {errors.title && <span>This field is required</span>}
+        {errors.title && <p className="text-red-700">This field is required</p>}
       </div>
       <div>
         <label htmlFor="description">Description</label>
@@ -38,12 +38,14 @@ export default function Form({ submitForm }: Form) {
           {typeof count === "string" ? count.length : 0} / {maxLength}
         </p>
         <textarea
-          className="w-full bg-slate-100 p-1"
+          className="w-full rounded bg-slate-100 p-1 focus:bg-slate-200 focus:outline-none"
           id="description"
           rows={10}
           {...register("description", { required: true, maxLength: maxLength })}
         />
-        {errors.description && <span>This field is required</span>}
+        {errors.description && (
+          <p className="text-red-700">This field is required</p>
+        )}
       </div>
 
       <button

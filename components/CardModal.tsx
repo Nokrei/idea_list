@@ -8,10 +8,10 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    width: "400px",
+    maxWidth: "90vw",
   },
 };
-// For testing
-// if (process.env.NODE_ENV !== "test") Modal.setAppElement("#app");
 
 type CardModal = {
   title: string;
@@ -27,7 +27,7 @@ export default function CardModal({
   children,
 }: CardModal) {
   return (
-    <div className=" rounded">
+    <div>
       <Modal
         isOpen={modalIsOpen}
         style={customStyles}
@@ -36,7 +36,7 @@ export default function CardModal({
         <div>
           <div className="text-end">
             <button
-              className=" rounded bg-red-400 px-2 duration-100 hover:bg-red-300"
+              className="rounded bg-red-400 px-2 duration-100 hover:bg-red-300"
               onClick={closeModal}
             >
               X
