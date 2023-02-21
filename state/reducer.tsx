@@ -39,7 +39,7 @@ type Action =
 export const initialState = { ideas: [] };
 
 export const sortIdeas = (
-  ideas: [],
+  ideas: any[],
   property: string | number,
   isDescending?: boolean
 ) => {
