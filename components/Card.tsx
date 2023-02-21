@@ -68,7 +68,7 @@ export default function Card({
   };
 
   return (
-    <div>
+    <div className="my-5 flex flex-col  rounded p-2 shadow-lg">
       <CardModal
         title="Edit idea"
         modalIsOpen={modalIsOpen}
@@ -76,8 +76,10 @@ export default function Card({
       >
         <Form submitForm={submitForm} />
       </CardModal>
-      <h2>{newTitle || title}</h2>
-      <div>
+      <h2 className="pb-2 text-center text-lg font-semibold uppercase">
+        {newTitle || title}
+      </h2>
+      <div className="text-sm">
         <p>Created on: {new Date(createdAt).toLocaleString("en-GB")}</p>
         {updatedAt ? (
           <p>Updated on: {new Date(updatedAt).toLocaleString("en-GB")}</p>
@@ -90,14 +92,20 @@ export default function Card({
       <div>
         <div>
           <p>{newDescription || description}</p>
-          <div onClick={handleModalOpen}>
-            <FaEdit />
-          </div>
         </div>
       </div>
 
-      <div>
-        <button className={"btn btn-secondary"} onClick={deleteCard}>
+      <div className="flex justify-between">
+        <button
+          className="inline-block w-20 rounded bg-blue-400 p-2 text-white"
+          onClick={handleModalOpen}
+        >
+          Edit
+        </button>
+        <button
+          className="inline-block w-20 rounded bg-red-400 p-2 text-white"
+          onClick={deleteCard}
+        >
           Delete
         </button>
       </div>

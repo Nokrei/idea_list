@@ -36,7 +36,7 @@ export default function MainPage() {
       createdAt: Date.now(),
     };
     dispatch({
-      type: "add",
+      type: "ADD_IDEA",
       newIdea,
     });
     setStoredIdeas([...storedIdeas, newIdea]);
@@ -46,7 +46,7 @@ export default function MainPage() {
   //   Delete by exact time of creation from state and from local storage
   const handleDeleteCard = (timeOfCreation: number) => {
     dispatch({
-      type: "delete",
+      type: "DELETE_IDEA",
       createdAt: timeOfCreation,
     });
     setStoredIdeas(
@@ -57,12 +57,12 @@ export default function MainPage() {
   // Sorting.
   const sortByDate = () => {
     dispatch({
-      type: "sortByDate",
+      type: "SORT_IDEAS_DATE",
     });
   };
   const sortByTitle = () => {
     dispatch({
-      type: "sortByTitle",
+      type: "SORT_IDEAS_TITLE",
     });
   };
 
@@ -75,7 +75,7 @@ export default function MainPage() {
   // On initial render copy ideas from local storage
   useEffect(() => {
     dispatch({
-      type: "copyFromLocal",
+      type: "COPY_IDEAS_FROM_LOCAL_STORAGE",
       payload: storedIdeas,
     });
   }, []);
@@ -91,22 +91,31 @@ export default function MainPage() {
         <Form submitForm={submitForm} />
       </CardModal>
       <header>
-        <h1 className="text-blue">Idea Board</h1>
+        <h1 className="text-center text-3xl font-bold">Idea Board</h1>
       </header>
-      <div>
-        <button className="btn btn-primary" onClick={handleModal}>
+      <div className="text-center">
+        <button
+          className="my-2 rounded bg-blue-400 py-2 px-4 text-lg font-bold text-white shadow-lg"
+          onClick={handleModal}
+        >
           +
         </button>
       </div>
-      <div>
-        <button onClick={sortByDate} className="btn btn-primary">
+      <div className="flex justify-center gap-5">
+        <button
+          onClick={sortByDate}
+          className="my-2 rounded bg-blue-400 py-2 px-4 text-lg font-bold text-white shadow-lg"
+        >
           Sort by date
         </button>
-        <button onClick={sortByTitle} className="btn btn-primary">
+        <button
+          onClick={sortByTitle}
+          className="my-2 rounded bg-blue-400 py-2 px-4 text-lg font-bold text-white shadow-lg"
+        >
           Sort by title
         </button>
       </div>
-      <div>
+      <div className="grid grid-cols-4">
         {state.ideas.map((card: Idea) => {
           return (
             <Card

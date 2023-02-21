@@ -13,7 +13,7 @@ export default function Layout({ title, description, children }: Layout) {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-      <main>{children}</main>
+      <main className="m-auto px-20 pt-10">{children}</main>
     </>
   );
 }

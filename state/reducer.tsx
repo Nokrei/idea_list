@@ -4,12 +4,30 @@ type State = {
 type Idea = {
   createdAt: number;
 };
-type Action = {
-  type: string;
-  newIdea: React.ReactNode;
-  createdAt: number;
-  payload: React.ReactNode;
+type AddIdeaAction = {
+  type: "ADD_IDEA";
+  newIdea: Idea;
 };
+type DeleteIdeaAction = {
+  type: "DELETE_IDEA";
+  createdAt: number;
+};
+type CopyFromLocalAction = {
+  type: "COPY_IDEAS_FROM_LOCAL_STORAGE";
+  payload: any;
+};
+type SortByDate = {
+  type: "SORT_IDEAS_DATE";
+};
+type SortByTitle = {
+  type: "SORT_IDEAS_TITLE";
+};
+type Action =
+  | AddIdeaAction
+  | DeleteIdeaAction
+  | CopyFromLocalAction
+  | SortByDate
+  | SortByTitle;
 
 export const initialState = { ideas: [] };
 
@@ -28,16 +46,16 @@ export const sortIdeas = (
   });
 };
 
-export const addIdea = (ideas: [], newIdea: React.ReactNode) => {
+export const addIdea = (ideas: [], newIdea: Idea) => {
   return [...ideas, newIdea];
 };
 
 export default function reducer(state: State, action: Action) {
   switch (action.type) {
-    case "add":
+    case "ADD_IDEA":
       return { ideas: addIdea(state.ideas, action.newIdea) };
 
-    case "delete":
+    case "DELETE_IDEA":
       return {
         ...state,
         ideas: state.ideas.filter(
@@ -45,20 +63,20 @@ export default function reducer(state: State, action: Action) {
         ),
       };
 
-    case "copyFromLocal": {
+    case "COPY_IDEAS_FROM_LOCAL_STORAGE": {
       return {
         ...state,
         ideas: action.payload,
       };
     }
 
-    case "sortByDate":
+    case "SORT_IDEAS_DATE":
       return {
         ...state,
         ideas: sortIdeas(state.ideas, "createdAt"),
       };
 
-    case "sortByTitle":
+    case "SORT_IDEAS_TITLE":
       return {
         ...state,
         ideas: sortIdeas(state.ideas, "title"),
