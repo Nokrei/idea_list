@@ -1,5 +1,3 @@
-import React from "react";
-import PropTypes from "prop-types";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -57,7 +55,3 @@ export default function Form({ submitForm }: Form) {
     </form>
   );
 }
-
-Form.propTypes = {
-  submitForm: PropTypes.func.isRequired,
-};

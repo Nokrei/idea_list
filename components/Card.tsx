@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { FaEdit } from "react-icons/fa";
 import { useLocalStorage } from "usehooks-ts";
 import CardModal from "../components/CardModal";
 import Form from "../components/Form";

@@ -1,5 +1,5 @@
 import React, { useState, useReducer, useEffect } from "react";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useLocalStorage } from "usehooks-ts";
 import reducer, { initialState } from "../state/reducer";
@@ -41,6 +41,7 @@ export default function MainPage() {
     });
     setStoredIdeas([...storedIdeas, newIdea]);
     setModalIsOpen(false);
+    toast("Idea Created!");
   };
 
   //   Delete by exact time of creation from state and from local storage
@@ -52,6 +53,7 @@ export default function MainPage() {
     setStoredIdeas(
       storedIdeas.filter((idea: Idea) => idea.createdAt !== timeOfCreation)
     );
+    toast("Idea Deleted!");
   };
 
   // Sorting.
@@ -78,7 +80,7 @@ export default function MainPage() {
       type: "COPY_IDEAS_FROM_LOCAL_STORAGE",
       payload: storedIdeas,
     });
-  }, []);
+  }, [storedIdeas]);
 
   return (
     <Layout title="Idea board" description="Create new ideas">
@@ -132,8 +134,3 @@ export default function MainPage() {
     </Layout>
   );
 }
-
-// To do:
-// caryying
-// local storage
-//

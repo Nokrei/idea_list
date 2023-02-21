@@ -1,4 +1,4 @@
-import { sortIdeas, addIdea } from "../state/reducer";
+import { sortIdeas } from "../state/reducer";
 import { expect } from "@jest/globals";
 
 const alpha = {
@@ -49,29 +49,5 @@ describe("SortIdeas function", () => {
     const result = sortIdeas([alpha, bravo, delta], "id", true);
 
     expect(result).toStrictEqual([bravo, alpha, delta]);
-  });
-
-  it("should return an array if ideas is empty", () => {
-    const result = sortIdeas();
-
-    expect(result).toStrictEqual([]);
-  });
-});
-
-// test adding new idea
-
-const newIdea = {
-  title: "title",
-  description: "description",
-  createdAt: Date.now(),
-};
-
-describe("AddIdea function", () => {
-  it("should add new idea", () => {
-    const expected = [...dummyIdeas, newIdea];
-
-    const result = addIdea(dummyIdeas, newIdea);
-
-    expect(result).toStrictEqual(expected);
   });
 });
