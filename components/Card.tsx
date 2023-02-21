@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { FaEdit } from "react-icons/fa";
-import useLocalStorage from "../utils/useLocalStorage";
+import { useLocalStorage } from "usehooks-ts";
 import CardModal from "../components/CardModal";
 import Form from "../components/Form";
 
@@ -27,7 +27,7 @@ export default function Card({
   deleteCard,
   updatedAt,
 }: Card) {
-  const [storedIdeas, setStoredIdeas] = useLocalStorage("ideaList", []);
+  const [storedIdeas, setStoredIdeas] = useLocalStorage<any[]>("ideaList", []);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
@@ -68,7 +68,7 @@ export default function Card({
   };
 
   return (
-    <div className="my-5 flex flex-col  rounded p-2 shadow-lg">
+    <div className=" flex flex-col rounded bg-white p-2 shadow-lg">
       <CardModal
         title="Edit idea"
         modalIsOpen={modalIsOpen}
@@ -95,15 +95,15 @@ export default function Card({
         </div>
       </div>
 
-      <div className="flex justify-between">
+      <div className="mt-auto flex justify-between pt-5">
         <button
-          className="inline-block w-20 rounded bg-blue-400 p-2 text-white"
+          className="inline-block rounded bg-slate-400 p-2 text-white duration-100 hover:bg-slate-300 sm:w-20"
           onClick={handleModalOpen}
         >
           Edit
         </button>
         <button
-          className="inline-block w-20 rounded bg-red-400 p-2 text-white"
+          className="inline-block rounded bg-red-400 p-2 text-white duration-100 hover:bg-red-300 sm:w-20"
           onClick={deleteCard}
         >
           Delete

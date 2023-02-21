@@ -27,18 +27,21 @@ export default function CardModal({
   children,
 }: CardModal) {
   return (
-    <div>
+    <div className=" rounded">
       <Modal
         isOpen={modalIsOpen}
         style={customStyles}
         contentLabel="Example Modal"
       >
         <div>
-          <div>
-            <h2 className="text-blue">{title}</h2>
-            <button className="btn btn-secondary" onClick={closeModal}>
+          <div className="text-end">
+            <button
+              className=" rounded bg-red-400 px-2 duration-100 hover:bg-red-300"
+              onClick={closeModal}
+            >
               X
             </button>
+            <h2 className="text-center text-lg font-semibold">{title}</h2>
           </div>
           <div>{children}</div>
         </div>

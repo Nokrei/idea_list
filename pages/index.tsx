@@ -93,29 +93,29 @@ export default function MainPage() {
       <header>
         <h1 className="text-center text-3xl font-bold">Idea Board</h1>
       </header>
-      <div className="text-center">
+      <div className="mt-5 text-center">
         <button
-          className="my-2 rounded bg-blue-400 py-2 px-4 text-lg font-bold text-white shadow-lg"
+          className="my-2 rounded bg-slate-600 py-2 px-4 text-lg font-bold text-white shadow-lg duration-100 hover:bg-slate-500"
           onClick={handleModal}
         >
           +
         </button>
       </div>
-      <div className="flex justify-center gap-5">
+      <div className="mb-5 flex justify-center gap-5">
         <button
           onClick={sortByDate}
-          className="my-2 rounded bg-blue-400 py-2 px-4 text-lg font-bold text-white shadow-lg"
+          className="my-2 rounded bg-slate-500 py-2 px-4 text-lg font-bold text-white shadow-lg duration-100 hover:bg-slate-400"
         >
           Sort by date
         </button>
         <button
           onClick={sortByTitle}
-          className="my-2 rounded bg-blue-400 py-2 px-4 text-lg font-bold text-white shadow-lg"
+          className="my-2 rounded bg-slate-500 py-2 px-4 text-lg font-bold text-white shadow-lg duration-100 hover:bg-slate-400"
         >
           Sort by title
         </button>
       </div>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {state.ideas.map((card: Idea) => {
           return (
             <Card

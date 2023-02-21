@@ -23,9 +23,11 @@ export default function Form({ submitForm }: Form) {
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <div>
+      <div className="pb-5">
         <label htmlFor="title">Title</label>
+        <br />
         <input
+          className="bg-slate-100 p-1"
           autoFocus
           id="title"
           {...register("title", { required: true, maxLength: 20 })}
@@ -34,10 +36,11 @@ export default function Form({ submitForm }: Form) {
       </div>
       <div>
         <label htmlFor="description">Description</label>
-        <p>
+        <p className="text-end">
           {typeof count === "string" ? count.length : 0} / {maxLength}
         </p>
         <textarea
+          className="w-full bg-slate-100 p-1"
           id="description"
           rows={10}
           {...register("description", { required: true, maxLength: maxLength })}
@@ -45,7 +48,12 @@ export default function Form({ submitForm }: Form) {
         {errors.description && <span>This field is required</span>}
       </div>
 
-      <input type="submit" className="btn btn-primary" />
+      <button
+        type="submit"
+        className="float-right rounded bg-slate-400 p-1 duration-100 hover:bg-slate-300"
+      >
+        Submit{" "}
+      </button>
     </form>
   );
 }
