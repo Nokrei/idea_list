@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import useLocalStorage from "../utils/useLocalStorage";
+import { useLocalStorage } from "usehooks-ts";
 import reducer, { initialState } from "../state/reducer";
 import CardModal from "../components/CardModal";
 import Card from "../components/Card";
@@ -22,7 +22,7 @@ type Inputs = {
 };
 
 export default function MainPage() {
-  const [storedIdeas, setStoredIdeas] = useLocalStorage("ideaList", []);
+  const [storedIdeas, setStoredIdeas] = useLocalStorage<any[]>("ideaList", []);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 

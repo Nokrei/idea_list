@@ -1,33 +1,40 @@
 type State = {
   ideas: [];
 };
+
 type Idea = {
   createdAt: number;
 };
+
 type AddIdeaAction = {
   type: "ADD_IDEA";
   newIdea: Idea;
 };
+
 type DeleteIdeaAction = {
   type: "DELETE_IDEA";
   createdAt: number;
 };
+
 type CopyFromLocalAction = {
   type: "COPY_IDEAS_FROM_LOCAL_STORAGE";
   payload: any;
 };
-type SortByDate = {
+
+type SortByDateAction = {
   type: "SORT_IDEAS_DATE";
 };
-type SortByTitle = {
+
+type SortByTitleAction = {
   type: "SORT_IDEAS_TITLE";
 };
+
 type Action =
   | AddIdeaAction
   | DeleteIdeaAction
   | CopyFromLocalAction
-  | SortByDate
-  | SortByTitle;
+  | SortByDateAction
+  | SortByTitleAction;
 
 export const initialState = { ideas: [] };
 
